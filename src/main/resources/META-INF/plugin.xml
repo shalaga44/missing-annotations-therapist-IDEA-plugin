@@ -1,18 +1,36 @@
 <!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
 <idea-plugin>
-    <id>com.github.shalaga44.missingannotationstherapist</id>
+    <id>com.github.shalaga44.missing-annotations-therapist</id>
     <name>missing-annotations-therapist</name>
-    <vendor>shalaga44</vendor>
+    <vendor email="shalaga44@e.email">shalaga44</vendor>
+    <description><![CDATA[
+        A Simple IntelliJ IDEA plugin that identifies classes missing specific annotations, like @kotlin.js.JsExport.
+     ]]></description>
 
     <depends>com.intellij.modules.platform</depends>
+    <depends>org.jetbrains.kotlin</depends>
+    <depends>com.intellij.java</depends>
 
     <resource-bundle>messages.MyBundle</resource-bundle>
 
     <extensions defaultExtensionNs="com.intellij">
-        <toolWindow factoryClass="com.github.shalaga44.missingannotationstherapist.toolWindow.MyToolWindowFactory" id="MyToolWindow"/>
+        <toolWindow factoryClass="com.github.shalaga44.missingannotationstherapist.toolWindow.MyToolWindowFactory"
+                    id="Annotations Therapies" />
     </extensions>
 
+    <extensions defaultExtensionNs="com.intellij">
+        <localInspection language="kotlin"
+                         displayName="Missing Annotations Inspection"
+                         groupPath="Kotlin"
+                         groupBundle="messages.MyBundle" groupKey="missing.annotations"
+                         enabledByDefault="true"
+                         level="WARNING"
+                         implementationClass="com.github.shalaga44.missingannotationstherapist.inspection.MissingAnnotationsInspection"/>
+    </extensions>
+
+
     <applicationListeners>
-        <listener class="com.github.shalaga44.missingannotationstherapist.listeners.MyApplicationActivationListener" topic="com.intellij.openapi.application.ApplicationActivationListener"/>
+        <listener class="com.github.shalaga44.missingannotationstherapist.listeners.MyApplicationActivationListener"
+                  topic="com.intellij.openapi.application.ApplicationActivationListener"/>
     </applicationListeners>
 </idea-plugin>
