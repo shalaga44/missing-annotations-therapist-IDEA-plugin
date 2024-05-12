@@ -6,7 +6,7 @@ import com.intellij.openapi.diagnostic.thisLogger
 import com.intellij.openapi.project.Project
 
 enum class MyScope {
-    Class
+    KtClass
 }
 
 enum class MyMatches {
@@ -21,8 +21,10 @@ data class MyMatchFinder(
 )
 
 data class MyAnnotation(
-    val shortName: String
-)
+    val fqName: String,
+) {
+    val shortName = fqName.substringAfterLast(".")
+}
 
 data class MyMissingMatcher(
     val annotations: List<MyAnnotation>,
@@ -33,7 +35,11 @@ data class MyMissingMatcher(
 @Service(Service.Level.PROJECT)
 class MyProjectService(project: Project) {
     val jsExport = MyMissingMatcher(
-        listOf(MyAnnotation(shortName = "JsExport")), listOf(MyScope.Class), listOf(
+        listOf(
+            MyAnnotation(fqName = "kotlin.js.JsExport"),
+        ),
+        listOf(MyScope.KtClass),
+        listOf(
             MyMatchFinder(
                 MyMatches.EndWith,
                 value = "dto"
