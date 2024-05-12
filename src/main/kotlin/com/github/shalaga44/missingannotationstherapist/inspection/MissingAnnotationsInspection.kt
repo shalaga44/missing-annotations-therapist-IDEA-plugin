@@ -3,10 +3,7 @@ package com.github.shalaga44.missingannotationstherapist.inspection
 import com.github.shalaga44.missingannotationstherapist.services.MyMatches
 import com.github.shalaga44.missingannotationstherapist.services.MyProjectService
 import com.github.shalaga44.missingannotationstherapist.services.MyScope
-import com.intellij.codeInspection.LocalInspectionTool
-import com.intellij.codeInspection.LocalQuickFix
-import com.intellij.codeInspection.ProblemDescriptor
-import com.intellij.codeInspection.ProblemsHolder
+import com.intellij.codeInspection.*
 import com.intellij.openapi.components.service
 import com.intellij.openapi.project.Project
 import com.intellij.psi.PsiElement
@@ -113,12 +110,13 @@ class MissingAnnotationsInspection : LocalInspectionTool() {
                                                     }
                                                 }
                                             }
+                                            val problemHighlightType: ProblemHighlightType = match.problemHighlightType
                                             holder.registerProblem(
                                                 kotlinClass.nameIdentifier!!,
                                                 "Class ends with 'dto' missing ${
                                                     allAnnotationsFoundMap.filterNot { it.second }
                                                         .joinToString { "@${it.first.shortName}" }
-                                                } annotation.",
+                                                } annotation.", problemHighlightType,
                                                 addAnnotation
                                             )
 
