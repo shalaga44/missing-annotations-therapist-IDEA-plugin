@@ -4,7 +4,26 @@
     <name>missing-annotations-therapist</name>
     <vendor email="shalaga44@e.email">shalaga44</vendor>
     <description><![CDATA[
-        A Simple IntelliJ IDEA plugin that identifies classes missing specific annotations, like @kotlin.js.JsExport.
+
+### Missing Annotations Therapist
+
+Missing Annotations Therapist is a simple IntelliJ IDEA plugin that identifies classes missing specific annotations like `@kotlin.js.JsExport`. This tool helps developers ensure that their code is properly annotated, improving code quality and adherence to project standards.
+
+### Features
+- Scans code to find classes lacking specified annotations.
+- Provides quick fixes to add the missing annotations.
+
+### Usage Instructions
+1. **Installation**: Download and install the plugin from JetBrains Marketplace.
+2. **Configuration**: Configure the annotations you want the plugin to check for.
+3. **Run the Plugin**: Use the plugin to scan your codebase for missing annotations. The plugin will highlight the classes and provide options to add the necessary annotations.
+
+### Documentation Links
+- [Plugin Homepage](https://github.com/shalaga44/missing-annotations-therapist)
+- [Issue Tracker](https://github.com/shalaga44/missing-annotations-therapist/issues)
+
+
+
      ]]></description>
 
     <depends>com.intellij.modules.platform</depends>
