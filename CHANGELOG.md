@@ -4,6 +4,10 @@
 
 ## [Unreleased]
 
+## [0.0.2] - 2024-05-14
+### Added
+- Add default logo and more description 
+
 ## [0.0.1] - 2024-05-12
 
 ### Added
@@ -12,3 +16,6 @@
 
 [Unreleased]: https://github.com/shalaga44/missing-annotations-therapist/compare/v0.0.1...HEAD
 [0.0.1]: https://github.com/shalaga44/missing-annotations-therapist/commits/v0.0.1
+[0.0.2]: https://github.com/shalaga44/missing-annotations-therapist/commits/v0.0.2
+
+
