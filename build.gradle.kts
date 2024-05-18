@@ -105,10 +105,14 @@ tasks {
 
     signPlugin {
         password.set(System.getenv("PRIVATE_KEY_PASSWORD"))
-        certificateChain.set(File( "./.keys/missing_annotations_therapist_chain.crt").readText(Charsets.UTF_8))
-        privateKey.set(File( "./.keys/missing_annotations_therapist_private_encrypted.pem").readText(Charsets.UTF_8))
+        certificateChain.set(
+            (providers.environmentVariable("CERTIFICATE_CHAIN")?.toString()
+                ?: "").ifBlank { File("./.keys/missing_annotations_therapist_chain.crt").readText(Charsets.UTF_8) })
+        privateKey.set((providers.environmentVariable("PRIVATE_KEY")?.toString()
+            ?: "").ifBlank{ File("./.keys/missing_annotations_therapist_private_encrypted.pem").readText(Charsets.UTF_8) })
 
     }
+
 
     publishPlugin {
         dependsOn("patchChangelog")
